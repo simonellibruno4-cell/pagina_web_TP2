@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destacados del mes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">← Volver al Inicio</a>
+    </nav>
+
+    <main>
+        <h1>Platos Destacados</h1>
+        <p>Hacé clic sobre tus platos favoritos para seleccionarlos:</p>
+
+        <p id="contador-seleccion" class="contador-texto">Tarjetas seleccionadas: 0</p>
+
+        <div class="contenedor-tarjetas">
+            <div class="tarjeta" role="button">
+                <h3>Locro</h3>
+                <p>Un contundente guiso de origen andino a base de maíz, carne, zapallo y papas.</p>
+            </div>
+            <div class="tarjeta" role="button">
+                <h3>Milanesa de carne napolitana con papas fritas</h3>
+                <p>Milanesa de carne con salsa filetto, muzzarella, jamón y orégano. Acompañado de papas fritas.</p>
+            </div>
+            <div class="tarjeta" role="button">
+                <h3>Ojo de bife al criollo</h3>
+                <p>Ojo de Bife de 500grs Panceta, huevo frito, morrón y aros de cebolla a la romana con guarnición a elección.</p>
+            </div>
+            <div class="tarjeta" role="button">
+                <h3>Flan casero con dulce</h3>
+                <p>El clásico infaltable con dulce de leche y crema.</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const tarjetas = document.querySelectorAll('.tarjeta');
+        const contadorTexto = document.getElementById('contador-seleccion');
+
+        //función para actualizar el contador basado en elementos con la clase
+        function actualizarContador() {
+            const seleccionadas = document.querySelectorAll('.tarjeta.seleccionada').length;
+            contadorTexto.textContent = `Tarjetas seleccionadas: ${seleccionadas}`;
+        }
+
+        //asignación de eventos a cada tarjeta
+        tarjetas.forEach(tarjeta => {
+            tarjeta.addEventListener('click', () => {
+                //alterna la clase usando classList
+                tarjeta.classList.toggle('seleccionada');
+                actualizarContador();
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Menú Completo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">← Volver al Inicio</a>
+    </nav>
+
+    <main>
+        <h1>Nuestro Menú Completo</h1>
+        <p>Filtrá los productos según tu preferencia:</p>
+
+        <div>
+            <button id="btn-todos">Mostrar Todos</button>
+            <button id="btn-salado">Solo Salado</button>
+        </div>
+
+        <div id="contenedor-menu" class="contenedor-tarjetas"></div>
+    </main>
+
+    <script>
+        //arreglo de 6 elementos con categoría definida
+        const productos = [
+            { nombre: "Hamburguesa Messi", tipo: "salado", desc: "filetes de pollo crujiente empanados, queso provolone fundido, alioli de hierbas, tomate y rúcula en un pan artesano tostado, servida con papas fritas sazonadas." },
+            { nombre: "Empanada Criolla", tipo: "salado", desc: "Carne cortada a cuchillo, bien jugosa." },
+            { nombre: "Tarta de Manzana", tipo: "dulce", desc: "Servida tibia con una bocha de crema." },
+            { nombre: "Papas Fritas con Queso", tipo: "salado", desc: "Porción grande con salsa de cheddar." },
+            { nombre: "Churros con Chocolate", tipo: "dulce", desc: "Tres unidades acompañadas de chocolate espeso." },
+            { nombre: "Alfajor Artesanal", tipo: "dulce", desc: "Relleno de abundante dulce de leche." }
+        ];
+
+        const contenedor = document.getElementById('contenedor-menu');
+        const btnTodos = document.getElementById('btn-todos');
+        const btnSalado = document.getElementById('btn-salado');
+
+        //función encargada de pintar los elementos en el DOM
+        function renderizarMenu(listaProductos) {
+            //limpiamos el contenedor para que no se dupliquen
+            contenedor.innerHTML = "";
+
+            listaProductos.forEach(prod => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'tarjeta';
+                
+                //estructura interna de la tarjeta
+                itemDiv.innerHTML = `
+                    <h3>${prod.nombre}</h3>
+                    <p>${prod.desc}</p>
+                    <small style="color: #7f8c8d; font-weight: bold;">Categoría: ${prod.tipo.toUpperCase()}</small>
+                `;
+                contenedor.appendChild(itemDiv);
+            });
+        }
+
+        //eventos de los botones utilizando filter
+        btnTodos.addEventListener('click', () => {
+            renderizarMenu(productos);
+        });
+
+        btnSalado.addEventListener('click', () => {
+            const filtrados = productos.filter(p => p.tipo === "salado");
+            renderizarMenu(filtrados); // Pasa únicamente los salados
+        });
+
+        //render inicial al cargar la página
+        renderizarMenu(productos);
+    </script>
+</body>
+</html>

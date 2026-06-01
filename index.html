@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio - Menú Meriendas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="destacados.html">Destacados</a>
+        <a href="listado.html">Listado Categorías</a>
+    </nav>
+
+    <main>
+        <h1>Nuestras Meriendas Recomendadas</h1>
+        <p>Descubrí las opciones ideales para la tarde:</p>
+
+        <ul id="lista-meriendas" class="lista-meriendas"></ul>
+
+        <button id="btn-contar">Contar variedad</button>
+        <p id="resultado-conteo" class="contador-texto"></p>
+    </main>
+
+    <script>
+        //arreglo de meriendas
+        const meriendas = [
+            "Submarino con Medialunas",
+            "Licuado de Banana y Tostado de Jamón y Queso",
+            "Café con Leche y Porción de Torta",
+            "Mate Cocido con Tortas Fritas",
+            "Té con Tostadas  mermelada y queso"
+        ];
+
+        //DOM elements
+        const listaUl = document.getElementById('lista-meriendas');
+        const btnContar = document.getElementById('btn-contar');
+        const resultadoP = document.getElementById('resultado-conteo');
+
+        //renderizar usando forEach
+        meriendas.forEach(merienda => {
+            const li = document.createElement('li');
+            li.textContent = merienda;
+            listaUl.appendChild(li);
+        });
+
+        //click para contar
+        btnContar.addEventListener('click', () => {
+            const total = meriendas.length;
+            resultadoP.textContent = `Tenemos ${total} opciones de meriendas disponibles para vos.`;
+        });
+    </script>
+</body>
+</html>

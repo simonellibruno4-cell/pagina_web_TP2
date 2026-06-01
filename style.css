@@ -65,7 +65,7 @@ button:hover {
     background-color: #d35400;
 }
 
-/* Ejercicio 1: lista de meriendas */
+/* ejercicio 1: lista de meriendas */
 .lista-meriendas {
     list-style: none;
     margin: 20px 0;
@@ -79,7 +79,7 @@ button:hover {
     border-radius: 4px;
 }
 
-/* Ejercicio 2 y 3: grilla y tarjetas */
+/* ejercicio 2 y 3: grilla y tarjetas */
 .contenedor-tarjetas {
     display: flex;
     flex-wrap: wrap;
